@@ -7,9 +7,9 @@ if __name__ == "__main__":
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((HOST, PORT))
     while True:
+        msg = message.Message(input("> ").strip())
         if msg == "exit":
             break
-        msg = message.Message(input("> ").strip())
         if msg == "":
             continue
         
