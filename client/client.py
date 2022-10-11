@@ -12,5 +12,5 @@ if __name__ == "__main__":
             break
         if msg == "":
             continue
-        
         client.send(msg.Encode().encode("utf-8"))
+    print("Done")
