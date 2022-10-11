@@ -1,4 +1,4 @@
-import socket
+import socket, message
 BUFFER = 1024
 HOST = "0.0.0.0"
 PORT = 44444
@@ -8,7 +8,7 @@ if __name__ == "__main__":
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     client.connect((HOST, PORT))
     while True:
-        message = input("> ").strip()
+        message = message.Message(input("> ").strip())
         if message == "":
             continue
-        client.send(message.encode("utf-8"))
+        client.send(message.Encode().encode("utf-8"))
