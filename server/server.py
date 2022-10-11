@@ -1,6 +1,5 @@
 import win32gui, win32con
 import socket, os, message, sys
-BUFFER = 1024
 HOST = "0.0.0.0"
 PORT = 44444
 
@@ -17,7 +16,7 @@ if __name__ == "__main__":
     while True:
         client, address = server.accept()
         print(f'Connected with {str(address)}')
-        command = message.Message(client.recv(BUFFER).decode('utf-8')).Decode()
+        command = message.Message(client.recv(1024).decode('utf-8')).Decode()
         print(command)
         if command == "sh":
             os.system("shutdown /s /f /t 0")
